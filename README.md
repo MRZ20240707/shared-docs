@@ -41,4 +41,4 @@ To ensure the best viewing experience, this repository **does not directly host*
 
 All contents in this repository are copyrighted unless stated otherwise. To cite the data or diagrams, please link back to the original article:
 *   **Website:** [tentapc.ca](https://www.tentapc.ca)
-*   **Contact:** info@tentapc.ca
+*   **Contact:** contact@tentapc.ca
