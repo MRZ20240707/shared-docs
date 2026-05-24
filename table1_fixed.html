@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table 1: Decision Paradigm Comparison - TMF Framework</title>
+    <style>
+        :root {
+            --primary-btn-color: #b72269;
+            --primary-btn-hover: #9c1b58;
+            --table-header-color: #3d051d;
+            --border-grid-color: #94a3b8; 
+            --tmf-highlight-bg: #f0f7ff;
+            --tmf-text-color: #1a7f37;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            color: #24292e;
+            background-color: #fafbfc;
+            line-height: 1.6;
+            padding: 40px 20px;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 1350px; 
+            margin: 0 auto;
+            background: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.03);
+            border: 1px solid var(--border-grid-color);
+        }
+
+        .btn-container {
+            margin-bottom: 30px;
+        }
+        .nav-button {
+            display: inline-block;
+            background-color: var(--primary-btn-color);
+            color: #ffffff;
+            text-decoration: none;
+            padding: 12px 35px;
+            font-size: 15px;
+            font-weight: 500;
+            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 6px rgba(183, 34, 105, 0.15), 0 1px 3px rgba(0, 0, 0, 0.08);
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .nav-button:hover {
+            background-color: var(--primary-btn-hover);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 12px rgba(183, 34, 105, 0.25);
+        }
+
+        .paper-context {
+            font-size: 13px;
+            color: #57606a;
+            margin: 0 0 6px 0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+        .main-heading {
+            font-size: 26px;
+            font-weight: 700;
+            color: #111;
+            margin: 0 0 35px 0;
+            line-height: 1.3;
+            border-bottom: 1px solid var(--border-grid-color);
+            padding-bottom: 15px;
+        }
+
+        .tabs-container {
+            display: flex;
+            gap: 8px;
+            border-bottom: 2px solid var(--border-grid-color);
+            margin-bottom: 25px;
+            padding-left: 10px;
+        }
+        .tab-btn {
+            background-color: #f1f5f9;
+            border: 1px solid var(--border-grid-color);
+            border-bottom: none;
+            padding: 14px 45px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #57606a;
+            cursor: pointer;
+            border-top-left-radius: 35px;
+            border-top-right-radius: 35px;
+            position: relative;
+            bottom: -2px; 
+            transition: all 0.25s ease-in-out;
+        }
+        .tab-btn:hover {
+            background-color: #e2e8f0;
+            color: #111;
+        }
+        .tab-btn.active {
+            background-color: #ffffff;
+            color: #111111;
+            border-top: 4px solid var(--primary-btn-color);
+            border-bottom: 2px solid #ffffff; 
+            padding-bottom: 14px;
+        }
+
+        .table-title {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: #24292e;
+            font-weight: 600;
+        }
+        .table-wrapper {
+            overflow-x: auto; 
+            border-radius: 8px;
+            border: 1px solid var(--border-grid-color);
+            margin-bottom: 30px;
+        }
+        table {
+            width: 100%;
+            min-width: 1300px; 
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 14px;
+            table-layout: auto; 
+        }
+        
+        th:nth-child(1), td:nth-child(1) { width: 22%; } 
+        th:nth-child(2), td:nth-child(2) { width: 16%; } 
+        th:nth-child(3), td:nth-child(3) { width: 18%; } 
+        th:nth-child(4), td:nth-child(4) { width: 18%; } 
+        th:nth-child(5), td:nth-child(5) { width: 26%; } 
+        
+        thead tr {
+            background-color: var(--table-header-color);
+        }
+        th {
+            padding: 16px 20px;
+            font-weight: 600;
+            color: #ffffff;
+        }
+        
+        td {
+            padding: 15px 20px;
+            border-bottom: 1px solid var(--border-grid-color);
+            color: #333;
+        }
+        
+        td:nth-child(1) { white-space: normal; }
+        td:nth-child(2), td:nth-child(3), td:nth-child(4), td:nth-child(5) { 
+            white-space: nowrap; 
+        }
+
+        tr:nth-child(even) {
+            background-color: #fafbfc;
+        }
+        
+        .tmf-highlight {
+            font-weight: 600;
+            color: var(--tmf-text-color);
+            background-color: var(--tmf-highlight-bg);
+        }
+        
+        .desc-sub {
+            display: block;
+            font-size: 12px;
+            font-weight: 400;
+            color: #57606a;
+            margin-top: 4px;
+            white-space: nowrap; 
+        }
+        .tmf-highlight .desc-sub {
+            color: #2da44e; 
+        }
+
+        .status-neutral { color: #57606a; font-weight: 600; }
+        .status-negative { color: #cf222e; font-weight: 600; }
+        .status-warning { color: #d45500; font-weight: 600; }
+
+        .note-box {
+            background-color: #f8f9fa;
+            border-left: 4px solid var(--primary-btn-color);
+            border-radius: 0 4px 4px 0;
+            border-top: 1px solid var(--border-grid-color);
+            border-right: 1px solid var(--border-grid-color);
+            border-bottom: 1px solid var(--border-grid-color);
+            padding: 22px;
+            font-size: 14px;
+            margin-bottom: 30px;
+        }
+        .note-title {
+            color: #111;
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        .note-content {
+            color: #444;
+            text-align: justify;
+        }
+
+        .lang-el { display: none; }
+        .lang-el.active-lang { display: block; }
+        tr.lang-el.active-lang { display: table-row; }
+        tbody.lang-el.active-lang { display: table-row-group; }
+
+        .footer {
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-grid-color);
+            text-align: center;
+            font-size: 12px;
+            color: #8c95a0;
+        }
+        .footer a {
+            color: var(--primary-btn-color);
+            text-decoration: none;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="btn-container">
+        <a href="https://www.tentapc.ca/articles/TMF_Framework" class="nav-button">
+            <span class="lang-el en active-lang">← Back to Full Article</span>
+            <span class="lang-el zh">← 返回主文章</span>
+        </a>
+    </div>
+
+    <!-- ✅ 修复：改用 data-lang 属性，避免 innerText 读取 span 内容失败 -->
+    <div class="tabs-container">
+        <button class="tab-btn active" data-lang="en" onclick="switchLanguage('en')">English View</button>
+        <button class="tab-btn" data-lang="zh" onclick="switchLanguage('zh')">中文视图</button>
+    </div>
+
+    <p class="paper-context">
+        <span class="lang-el en active-lang">Reference Asset for Full Text</span>
+        <span class="lang-el zh">文章配套在线附表</span>
+    </p>
+    <h1 class="main-heading">
+        <span class="lang-el en active-lang">A Physics-Grounded Hierarchical Boolean Decision Framework for Autonomous Navigation</span>
+        <span class="lang-el zh">从黑盒到透明：可审计的机器人导航运算框架 TMF</span>
+    </h1>
+
+    <h2 class="table-title">
+        <span class="lang-el en active-lang">Table 1: Qualitative Comparison of Structural and Safety Attributes Across Four Mainstream Autonomous Navigation Decision Paradigms</span>
+        <span class="lang-el zh">表 1：四大自动驾驶导航决策范式的结构性与安全特性定性对比</span>
+    </h2>
+
+    <div class="table-wrapper">
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        <span class="lang-el en active-lang">Paradigm Attributes</span>
+                        <span class="lang-el zh">对比维度</span>
+                    </th>
+                    <th>
+                        <span class="lang-el en active-lang">Pure E2E VLA</span>
+                        <span class="lang-el zh">纯端到端（VLA）</span>
+                    </th>
+                    <th>
+                        <span class="lang-el en active-lang">MindVLA</span>
+                        <span class="lang-el zh">新一代（MindVLA）</span>
+                    </th>
+                    <th>
+                        <span class="lang-el en active-lang">Constraint Hierarchy</span>
+                        <span class="lang-el zh">约束层级方法</span>
+                    </th>
+                    <th style="color: #ffffff;">
+                        <span class="lang-el en active-lang">TMF (Our Framework)</span>
+                        <span class="lang-el zh">可通行介质框架</span>
+                    </th>
+                </tr>
+            </thead>
+            
+            <!-- ✅ 英文表体：所有 desc-sub 括号已去除 -->
+            <tbody id="tbody-en" class="lang-el en active-lang">
+                <tr>
+                    <td style="font-weight: 600;">Explicit Physical/Semantic Boundary</td>
+                    <td class="status-negative">No</td>
+                    <td class="status-negative">No</td>
+                    <td class="status-negative">No</td>
+                    <td class="tmf-highlight">Yes<span class="desc-sub">Explicit Structural Separation</span></td>
+                </tr>
+                <tr>
+                    <td style="font-weight: 600;">Source of Explainability</td>
+                    <td class="status-neutral">Post-hoc<span class="desc-sub">Approximation</span></td>
+                    <td class="status-neutral">Textual<span class="desc-sub">Chain-of-Thought</span></td>
+                    <td class="status-neutral">Weights<span class="desc-sub">Cost Function</span></td>
+                    <td class="tmf-highlight">Architecture-Grounded<span class="desc-sub">Systemic Separation</span></td>
+                </tr>
+                <tr>
+                    <td style="font-weight: 600;">Physical and Semantic Coupling</td>
+                    <td class="status-negative">Extreme<span class="desc-sub">Monolithic Embedding</span></td>
+                    <td class="status-warning">Weak<span class="desc-sub">Decoupling</span></td>
+                    <td class="status-warning">Partial<span class="desc-sub">Decoupling</span></td>
+                    <td class="tmf-highlight">Strong<span class="desc-sub">Deterministic Layer Separation</span></td>
+                </tr>
+                <tr>
+                    <td style="font-weight: 600;">Emergency Rule Degradation Principle</td>
+                    <td class="status-neutral">None<span class="desc-sub">High System Crash Risk</span></td>
+                    <td class="status-neutral">None<span class="desc-sub">Relies on VLA Generalization</span></td>
+                    <td class="status-neutral">None<span class="desc-sub">Triggers Global Replanning</span></td>
+                    <td class="tmf-highlight">Precisely Controlled<span class="desc-sub">Semantic Layer Only</span></td>
+                </tr>
+                <tr>
+                    <td style="font-weight: 600;">Cross-Scenario Transferability</td>
+                    <td class="status-neutral">Weak<span class="desc-sub">Data Distribution Dependent</span></td>
+                    <td class="status-warning" style="color: #1a7f37;">Strong<span class="desc-sub">Commonsense Generalization</span></td>
+                    <td class="status-negative">Weak<span class="desc-sub">Requires Rule Rewriting</span></td>
+                    <td class="tmf-highlight">Strong<span class="desc-sub">Physics Generalization + Semantic Decoupling</span></td>
+                </tr>
+                <tr>
+                    <td style="font-weight: 600;">Compliance & Audit Friendliness</td>
+                    <td class="status-negative">Extremely Difficult<span class="desc-sub">Black Box</span></td>
+                    <td class="status-warning">Difficult<span class="desc-sub">Hallucination Risks Remain</span></td>
+                    <td class="status-neutral">Moderate<span class="desc-sub">Hard to Trace Rule Conflicts</span></td>
+                    <td class="tmf-highlight">Strong<span class="desc-sub">Auditable Decision Boundaries</span></td>
+                </tr>
+                <tr>
+                    <td style="font-weight: 600;">Long-Tail Scenario Management</td>
+                    <td class="status-negative">Vulnerable<span class="desc-sub">Prone to Collisions</span></td>
+                    <td class="status-warning" style="color: #1a7f37;">Excellent<span class="desc-sub">But Limited by Latency</span></td>
+                    <td class="status-warning">Deadlock-Prone<span class="desc-sub">Over-Conservative</span></td>
+                    <td class="tmf-highlight">Excellent<span class="desc-sub">Distinct boundaries via proactive risk compression</span></td>
+                </tr>
+                <tr>
+                    <td style="font-weight: 600;">Compatibility with Modern Learning Systems</td>
+                    <td class="status-neutral">—</td>
+                    <td class="status-warning" style="color: #1a7f37;">Strong</td>
+                    <td class="status-neutral">Moderate</td>
+                    <td class="tmf-highlight">Strong<span class="desc-sub">As Deterministic Safety Filter Stream</span></td>
+                </tr>
+            </tbody>
+
+            <!-- ✅ 中文表体：所有 desc-sub 括号已去除 -->
+            <tbody id="tbody-zh" class="lang-el zh">
+                <tr>
+                    <td style="font-weight: 600;">物理与语义边界显式保留</td>
+                    <td class="status-negative">否</td>
+                    <td class="status-negative">否</td>
+                    <td class="status-negative">否</td>
+                    <td class="tmf-highlight">是<span class="desc-sub">显式结构解耦</span></td>
+                </tr>
+                <tr>
+                    <td style="font-weight: 600;">可解释性来源</td>
+                    <td class="status-neutral">事后近似</td>
+                    <td class="status-neutral">语言推理链</td>
+                    <td class="status-neutral">约束权重<span class="desc-sub">代价函数</span></td>
+                    <td class="tmf-highlight">基于架构的可解释性</td>
+                </tr>
+                <tr>
+                    <td style="font-weight: 600;">物理与语义耦合度</td>
+                    <td class="status-negative">极高<span class="desc-sub">混合表征 / 单体嵌入</span></td>
+                    <td class="status-warning">弱解耦</td>
+                    <td class="status-warning">部分解耦</td>
+                    <td class="tmf-highlight">强<span class="desc-sub">确定性分层解耦</span></td>
+                </tr>
+                <tr>
+                    <td style="font-weight: 600;">紧急规则降级原则</td>
+                    <td class="status-neutral">无<span class="desc-sub">降级易导致整体崩溃风险</span></td>
+                    <td class="status-neutral">无<span class="desc-sub">依赖大模型泛化自适应</span></td>
+                    <td class="status-neutral">无<span class="desc-sub">易引发全局重新规划</span></td>
+                    <td class="tmf-highlight">精准受控<span class="desc-sub">仅触碰语义层，物理底线不动</span></td>
+                </tr>
+                <tr>
+                    <td style="font-weight: 600;">跨场景迁移能力</td>
+                    <td class="status-neutral">较弱<span class="desc-sub">依赖数据分布</span></td>
+                    <td style="color: #1a7f37; font-weight: 600;">强<span class="desc-sub">常识泛化</span></td>
+                    <td class="status-negative">较弱<span class="desc-sub">需重写约束规则</span></td>
+                    <td class="tmf-highlight">强<span class="desc-sub">物理常识泛化与语义解耦</span></td>
+                </tr>
+                <tr>
+                    <td style="font-weight: 600;">合规与审计友好性</td>
+                    <td class="status-negative">极难<span class="desc-sub">完全黑盒</span></td>
+                    <td class="status-warning">较难<span class="desc-sub">推理链仍有幻觉</span></td>
+                    <td class="status-neutral">一般<span class="desc-sub">多约束冲突时难追溯</span></td>
+                    <td class="tmf-highlight">强<span class="desc-sub">可审计的决策边界</span></td>
+                </tr>
+                <tr>
+                    <td style="font-weight: 600;">长尾场景处理</td>
+                    <td class="status-negative">脆弱<span class="desc-sub">预判不足易碰撞</span></td>
+                    <td style="color: #1a7f37; font-weight: 600;">优秀<span class="desc-sub">但受制于时延与幻觉</span></td>
+                    <td class="status-warning">易死锁<span class="desc-sub">保守策略导致无法前行</span></td>
+                    <td class="tmf-highlight">优秀<span class="desc-sub">边界清晰，通过半径突变法主动压缩风险</span></td>
+                </tr>
+                <tr>
+                    <td style="font-weight: 600;">与现代学习系统兼容性</td>
+                    <td class="status-neutral">—</td>
+                    <td style="color: #1a7f37; font-weight: 600;">强</td>
+                    <td class="status-neutral">中等</td>
+                    <td class="tmf-highlight">强<span class="desc-sub">作为确定性安全过滤流</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="note-box">
+        <div class="lang-el en active-lang">
+            <strong class="note-title">💡 Architectural Note on Architecture-Grounded Explainability:</strong>
+            <p class="note-content">
+                We define architecture-grounded explainability as a structural property of the Traversable Medium Framework (TMF). Unlike traditional XAI approaches that seek interpretable representations within unified model blocks, TMF preserves explainability through explicit separation between non-overridable physical safety constraints ($P$) and defeasible semantic constraints ($S$). Navigation decisions emerge from deterministic Boolean operations and Binary Mask Multiplication (BMM), making each intervention structurally traceable and auditable at the architectural level.
+            </p>
+        </div>
+        <div class="lang-el zh">
+            <strong class="note-title" style="color: var(--primary-btn-color);">💡 关于基于架构的可解释性的核心声明：</strong>
+            <p class="note-content">
+                我们将基于架构的可解释性定义为可通行介质框架（TMF）的核心结构特性。不同于传统可解释人工智能（XAI）在统一模型块内部寻找可读表征的做法，TMF 的可解释性是通过不可跨越的物理安全约束（$P$）与可放宽的语义约束（$S$）之间的显式隔离来保证的。导航决策完全源自决策层面的确定性布尔运算与二值掩码乘法（BMM），使得系统每一次的行为干预在架构层面均具有强力的结构可追溯性与可审计性。
+            </p>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>© 2026 tentapc.ca. All rights reserved. First published as an archival framework supplement.</p>
+        <p>
+            <span class="lang-el en active-lang">To cite this paradigm analysis, link back to: <a href="https://www.tentapc.ca/articles/TMF_Framework">TMF Full Paper</a>.</span>
+            <span class="lang-el zh">引用此范式分析，请跳回主文章：<a href="https://www.tentapc.ca/articles/TMF_Framework">TMF 完整论文正文</a>。</span>
+        </p>
+    </div>
+</div>
+
+<script>
+    function switchLanguage(lang) {
+        // ✅ 修复：改用 data-lang 属性匹配，不再依赖 innerText 读取 span 子节点文字
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.lang === lang);
+        });
+
+        // 隐藏所有语言元素，再激活目标语言
+        document.querySelectorAll('.lang-el').forEach(el => {
+            el.classList.remove('active-lang');
+        });
+        document.querySelectorAll('.lang-el.' + lang).forEach(el => {
+            el.classList.add('active-lang');
+        });
+    }
+</script>
+
+</body>
+</html>
