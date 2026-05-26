@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Figures: TMF Framework Illustrations</title>
+    <style>
+        :root {
+            --primary-btn-color: #b72269;
+            --primary-btn-hover: #9c1b58;
+            --table-header-color: #3d051d;
+            --border-grid-color: #94a3b8;
+            --tmf-highlight-bg: #f0f7ff;
+            --tmf-text-color: #1a7f37;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            color: #24292e;
+            background-color: #fafbfc;
+            line-height: 1.6;
+            padding: 40px 20px;
+            margin: 0;
+        }
+        .container {
+            max-width: 1350px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.03);
+            border: 1px solid var(--border-grid-color);
+        }
+        .btn-container {
+            margin-bottom: 30px;
+        }
+        .nav-button {
+            display: inline-block;
+            background-color: var(--primary-btn-color);
+            color: #ffffff;
+            text-decoration: none;
+            padding: 12px 35px;
+            font-size: 15px;
+            font-weight: 500;
+            border-radius: 6px;
+            border: 1px solid rgba(255,255,255,0.2);
+            box-shadow: 0 4px 6px rgba(183,34,105,0.15), 0 1px 3px rgba(0,0,0,0.08);
+            transition: all 0.25s cubic-bezier(0.4,0,0.2,1);
+        }
+        .nav-button:hover {
+            background-color: var(--primary-btn-hover);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 12px rgba(183,34,105,0.25);
+        }
+        .paper-context {
+            font-size: 13px;
+            color: #57606a;
+            margin: 0 0 6px 0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+        .main-heading {
+            font-size: 26px;
+            font-weight: 700;
+            color: #111;
+            margin: 0 0 35px 0;
+            line-height: 1.3;
+            border-bottom: 1px solid var(--border-grid-color);
+            padding-bottom: 15px;
+        }
+
+        /* TABS */
+        .tabs-container {
+            display: flex;
+            gap: 8px;
+            border-bottom: 2px solid var(--border-grid-color);
+            margin-bottom: 25px;
+            padding-left: 10px;
+        }
+        .tab-btn {
+            background-color: #f1f5f9;
+            border: 1px solid var(--border-grid-color);
+            border-bottom: none;
+            padding: 14px 45px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #57606a;
+            cursor: pointer;
+            border-top-left-radius: 35px;
+            border-top-right-radius: 35px;
+            position: relative;
+            bottom: -2px;
+            transition: all 0.25s ease-in-out;
+        }
+        .tab-btn:hover {
+            background-color: #e2e8f0;
+            color: #111;
+        }
+        .tab-btn.active {
+            background-color: #ffffff;
+            color: #111111;
+            border-top: 4px solid var(--primary-btn-color);
+            border-bottom: 2px solid #ffffff;
+            padding-bottom: 14px;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+
+        /* PAGE TITLE inside tab */
+        .section-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: #111;
+            margin: 0 0 6px 0;
+            line-height: 1.3;
+        }
+        .section-title-cn {
+            font-size: 18px;
+            font-weight: 600;
+            color: #444;
+            margin: 0 0 30px 0;
+        }
+
+        /* FIGURE GRID — 3 columns */
+        .figure-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 24px;
+            margin-bottom: 40px;
+            align-items: start;
+        }
+        .figure-cell {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .figure-cell img {
+            height: 320px;
+            width: auto;
+            max-width: 100%;
+            object-fit: contain;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            display: block;
+        }
+        .figure-caption {
+            margin-top: 14px;
+            width: 100%;
+            max-width: 340px;
+            text-align: left;
+        }
+        .caption-en {
+            font-size: 13.5px;
+            color: #24292e;
+            line-height: 1.55;
+            margin-bottom: 6px;
+        }
+        .caption-en strong {
+            display: block;
+            font-weight: 700;
+            color: #111;
+            margin-bottom: 2px;
+        }
+        .caption-cn {
+            font-size: 13px;
+            color: #57606a;
+            line-height: 1.55;
+            border-top: 1px solid #e9ecef;
+            padding-top: 6px;
+        }
+        .caption-cn strong {
+            display: block;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 2px;
+        }
+
+        /* BODY TEXT */
+        .body-text {
+            border-top: 1px solid var(--border-grid-color);
+            padding-top: 32px;
+        }
+        .prose-en {
+            font-size: 15px;
+            color: #24292e;
+            line-height: 1.75;
+            margin-bottom: 28px;
+        }
+        .prose-en p {
+            margin: 0 0 16px 0;
+        }
+        .prose-en p:last-child {
+            margin-bottom: 0;
+        }
+        .prose-cn {
+            font-size: 14.5px;
+            color: #444;
+            line-height: 1.85;
+            background: #fafbfc;
+            border-left: 3px solid var(--primary-btn-color);
+            padding: 20px 24px;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 0;
+        }
+        .prose-cn p {
+            margin: 0 0 14px 0;
+        }
+        .prose-cn p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* TAB 2 — single image layout */
+        .figure-single {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 36px;
+        }
+        .figure-single-cell {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 700px;
+        }
+        .figure-single-cell img {
+            width: 100%;
+            height: auto;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+        }
+        .figure-single-cell .figure-caption {
+            max-width: 100%;
+        }
+
+        /* RISK TABLE */
+        .risk-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 24px 0 32px 0;
+            font-size: 14px;
+        }
+        .risk-table th {
+            background-color: var(--table-header-color);
+            color: #fff;
+            padding: 10px 16px;
+            text-align: left;
+            font-weight: 600;
+        }
+        .risk-table td {
+            padding: 10px 16px;
+            border-bottom: 1px solid #e2e8f0;
+            vertical-align: top;
+        }
+        .risk-table tr:nth-child(even) td {
+            background-color: #fafbfc;
+        }
+        .risk-high {
+            color: #cf222e;
+            font-weight: 600;
+        }
+        .risk-low {
+            color: #1a7f37;
+            font-weight: 600;
+        }
+
+        /* NOTE BOX */
+        .note-box {
+            background: #fff8e1;
+            border: 1px solid #f0c040;
+            border-radius: 8px;
+            padding: 16px 20px;
+            font-size: 13.5px;
+            color: #5a4a00;
+            margin-top: 32px;
+            line-height: 1.65;
+        }
+        .note-box strong {
+            color: #3a3000;
+        }
+
+        /* SECTION SUBHEAD */
+        .subhead {
+            font-size: 16px;
+            font-weight: 700;
+            color: #111;
+            margin: 28px 0 10px 0;
+            padding-bottom: 4px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <div class="btn-container">
+        <a href="https://www.tentapc.ca/articles/TMF_Framework" class="nav-button">← Back to Paper　返回论文</a>
+    </div>
+
+    <p class="paper-context">TMF Framework · Traversable Medium Framework</p>
+    <h1 class="main-heading">Figures &amp; Illustrations　插图与示意图</h1>
+
+    <!-- TABS -->
+    <div class="tabs-container">
+        <button class="tab-btn active" onclick="switchTab('tab1', this)">Figure 1–2　图底反转</button>
+        <button class="tab-btn" onclick="switchTab('tab2', this)">Figure 3　半径突变法</button>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════ TAB 1 -->
+    <div id="tab1" class="tab-content active">
+
+        <h2 class="section-title">Figure-Ground Reversal and the Traversable Medium</h2>
+        <p class="section-title-cn">底图反转与可通行介质</p>
+
+        <div class="figure-grid">
+
+            <!-- Figure 0 -->
+            <div class="figure-cell">
+                <img src="https://github.com/tentapcreations/shared-docs/blob/main/0-geshita.png?raw=true"
+                     alt="Gestalt figure-ground reversal: vase and faces">
+                <div class="figure-caption">
+                    <div class="caption-en">
+                        <strong>Fig. 0 · Gestalt Figure-Ground Reversal</strong>
+                        What do you see first — two faces, or a single cup? Both readings are valid. Which one you see depends on what you treat as figure, and what you treat as ground.
+                    </div>
+                    <div class="caption-cn">
+                        <strong>图 0 · 格式塔图底反转</strong>
+                        你首先看到的是两张脸，还是一只杯子？两种解读都成立。你看到的，取决于你把什么当作图，把什么当作底。
+                    </div>
+                </div>
+            </div>
+
+            <!-- Figure 1 -->
+            <div class="figure-cell">
+                <img src="https://github.com/tentapcreations/shared-docs/blob/main/1-Object%20center.png?raw=true"
+                     alt="Object-center view of intersection">
+                <div class="figure-caption">
+                    <div class="caption-en">
+                        <strong>Fig. 1 · Object-Center View</strong>
+                        Obstacles are the figure. The more complex the scene, the more objects must be identified and classified before any navigation decision can be made.
+                    </div>
+                    <div class="caption-cn">
+                        <strong>图 1 · 以物体为中心</strong>
+                        障碍物是图。场景越复杂，需要识别和分类的物体就越多，导航决策才能开始。
+                    </div>
+                </div>
+            </div>
+
+            <!-- Figure 2 -->
+            <div class="figure-cell">
+                <img src="https://github.com/tentapcreations/shared-docs/blob/main/2-TM%20center.png?raw=true"
+                     alt="Traversable medium center view of intersection">
+                <div class="figure-caption">
+                    <div class="caption-en">
+                        <strong>Fig. 2 · Traversable Medium View</strong>
+                        The traversable medium is the figure. Obstacles are no longer objects to be identified — they become the boundary where traversable space ends.
+                    </div>
+                    <div class="caption-cn">
+                        <strong>图 2 · 以可通行介质为中心</strong>
+                        可通行介质是图。障碍物不再是需要识别的物体——它们成为可通行空间结束的边界。
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- /figure-grid -->
+
+        <!-- Body text -->
+        <div class="body-text">
+            <div class="prose-en">
+                <p>Imagine you are instantly teleported to an alien world. Gravity feels familiar. The air is breathable. The ground holds your weight. There are roads, intersections, and what appear to be traffic signals — but every single object around you is completely unrecognizable. You cannot name a single thing you see.</p>
+                <p>Could you still drive? Of course you could.</p>
+                <p>This thought experiment reveals something that tends to go unnoticed in autonomous driving research: safe navigation does not require knowing <em>what</em> something is. It requires knowing <em>where you can go</em>. A vehicle does not need to recognize a wall to avoid it — it needs to detect that the space ahead is no longer traversable.</p>
+                <p>This is the figure-ground reversal at the heart of TMF. Instead of modeling the world as a collection of objects to be identified, TMF models it as a field of traversable medium to be measured. Obstacles do not disappear — they become the boundary where traversable medium ends. The question shifts from <em>"what is that?"</em> to <em>"can I go there?"</em></p>
+                <p>When safety is grounded in physics rather than semantics, the system generalizes across environments — because physical constraints do not change when the scenery does.</p>
+            </div>
+            <div class="prose-cn">
+                <p>想象你被瞬间传送到了一个外星世界。重力感觉和地球一样。空气可以呼吸。地面支撑你的重量。有道路，有路口，有看起来像交通信号灯的东西——但你周围的每一个物体都完全无法辨认，你叫不出任何一样东西的名字。</p>
+                <p>你还会开车吗？当然会。</p>
+                <p>这个思想实验揭示了自动驾驶研究中一个容易被忽视的事实：安全导航不需要知道某样东西"是什么"，它需要知道的是"我能去哪里"。车辆不需要识别出前方是一堵墙才能避开它——它只需要检测到前方空间已经不再可通行。</p>
+                <p>这正是 TMF 核心的底图反转。TMF 不把世界建模为一组需要被识别的物体，而是建模为一个需要被测量的可通行介质场。障碍物并没有消失——它们成为了可通行介质结束的边界。问题从"那是什么？"变成了"我能过去吗？"</p>
+                <p>当安全建立在物理之上而非语义之上，系统就获得了跨环境的泛化能力——因为物理约束不会随着场景的变化而改变。</p>
+            </div>
+        </div>
+
+    </div><!-- /tab1 -->
+
+    <!-- ═══════════════════════════════════════════════ TAB 2 -->
+    <div id="tab2" class="tab-content">
+
+        <h2 class="section-title">Radius-Jump Release-Point Detection</h2>
+        <p class="section-title-cn">半径突变释放点监测法</p>
+
+        <div class="figure-single">
+            <div class="figure-single-cell">
+                <img src="https://github.com/tentapcreations/shared-docs/blob/main/3-potential%20release%20points.png?raw=true"
+                     alt="Radius-jump release point detection diagram">
+                <div class="figure-caption">
+                    <div class="caption-en">
+                        <strong>Fig. 3 · Radius-Jump Release-Point Detection</strong>
+                        A top-down 2D view. Green represents traversable medium. The vehicle is at the origin. All five marked points fall within the +Y zone — the area where the host vehicle is responsible for safe travel.
+                    </div>
+                    <div class="caption-cn">
+                        <strong>图 3 · 半径突变释放点监测法</strong>
+                        二维俯视示意图。绿色为可通行介质区域。主车位于坐标原点。图中五个标记点均位于 +Y 区域——即主车需要负责安全行驶的区域。
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="body-text">
+
+            <div class="subhead">How the Method Works　方法原理</div>
+
+            <div class="prose-en">
+                <p>The host vehicle continuously emits radar beams in all directions. Each beam returns a single value: the depth of traversable medium along that direction — how far open space extends before hitting a boundary. In a 2D top-down map, this produces a ring of radius values around the vehicle.</p>
+                <p>When two adjacent beams show a sudden jump in radius, that discontinuity marks a <strong>release point</strong> — a location on the boundary of traversable medium where a moving object could emerge without warning. The short-radius end of the jump is tagged as a risk source.</p>
+                <p>Scan direction is not arbitrary. On the left side (−X), beams sweep from −X toward +Y. On the right side (+X), beams sweep from +X toward +Y. This directionality ensures that the geometry of each jump can be interpreted correctly.</p>
+            </div>
+            <div class="prose-cn">
+                <p>主车持续向各方向发射雷达波束。每条波束返回一个数值：该方向上可通行介质的深度——开放空间在抵达边界之前延伸的距离。在二维俯视图中，这产生了围绕主车的一圈半径值。</p>
+                <p>当相邻两条波束出现半径突变时，该不连续点标记为<strong>释放点</strong>——可通行介质边界上潜在运动对象可能无预警涌现的位置。突变中短半径的末端被标记为风险源点。</p>
+                <p>扫描方向有明确规定。左侧（−X）波束从 −X 向 +Y 扫描，右侧（+X）波束从 +X 向 +Y 扫描。这一方向性确保每个突变的几何含义可以被正确解读。</p>
+            </div>
+
+            <div class="subhead">Risk Level by Jump Direction　突变方向与风险等级</div>
+
+            <table class="risk-table">
+                <thead>
+                    <tr>
+                        <th>Points　标记点</th>
+                        <th>Jump Pattern　突变模式</th>
+                        <th>Exit Direction　出口方向</th>
+                        <th>Risk　风险等级</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>1, 4, 5</strong></td>
+                        <td>Short → Long　先短后长</td>
+                        <td>Lateral (±X)　横向</td>
+                        <td class="risk-high">Higher　较高</td>
+                    </tr>
+                    <tr>
+                        <td><strong>2, 3</strong></td>
+                        <td>Long → Short　先长后短</td>
+                        <td>Parallel to +Y　与主车同向</td>
+                        <td class="risk-low">Lower　较低</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="prose-en">
+                <p><strong>Points 1, 4, 5 — short to long.</strong> The beam sweeps from an occluded edge into open space, indicating a lateral exit. Any object emerging here enters the vehicle's path with transverse velocity, leaving minimal reaction time.</p>
+                <p><strong>Points 2, 3 — long to short.</strong> The exit is oriented roughly parallel to the vehicle's direction of travel (+Y). An emerging object would initially move in the same direction as the host vehicle, giving the system more time to respond.</p>
+            </div>
+            <div class="prose-cn">
+                <p><strong>点 1、4、5——先短后长。</strong>波束从遮挡物边缘扫出至开阔空间，表明此处存在横向出口。潜在对象一旦出现，将以横向速度直接进入主车路径，留给系统的反应时间极短，风险等级较高。</p>
+                <p><strong>点 2、3——先长后短。</strong>出口方向与主车行进方向（+Y）大致平行。潜在对象若出现，其初始运动方向与主车相近，系统有更多时间介入，风险等级相对较低。</p>
+            </div>
+
+            <div class="subhead">Why This Matters　为什么重要</div>
+
+            <div class="prose-en">
+                <p>Traditional systems handle "ghost probes," occluded oncoming vehicles, and suddenly moving pedestrians as separate problems — because semantically, they appear different. The radius-jump method unifies them as a single physical event: did a tagged risk source release a measurable moving object?</p>
+                <p>The system does not need to model what might be hiding in occluded space. It only needs to monitor the tagged points — and the moment a velocity vector appears, standard trajectory prediction and collision-time calculation begin.</p>
+            </div>
+            <div class="prose-cn">
+                <p>传统系统将"鬼探头"、遮挡来车、静止行人突然移动视为独立问题分别处理，因为在语义上它们看起来不同。半径突变法将它们统一为同一个物理事件：某个被标记的风险源点，是否释放出了可测速的运动对象？</p>
+                <p>系统不需要猜测遮挡空间里有什么。它只需要持续监测这些被标记的点——一旦有速度向量出现，立即启动轨迹预测与碰撞时间计算。</p>
+            </div>
+
+            <div class="note-box">
+                <strong>Note / 注：</strong> The radius-jump method has not yet been validated through physical experiment or simulation. The above represents a theoretical formulation awaiting empirical testing.<br>
+                半径突变法目前尚未经过物理实验或仿真验证，以上内容为待验证的理论框架。
+            </div>
+
+        </div><!-- /body-text -->
+
+    </div><!-- /tab2 -->
+
+</div><!-- /container -->
+
+<script>
+    function switchTab(tabId, btn) {
+        document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.getElementById(tabId).classList.add('active');
+        btn.classList.add('active');
+    }
+</script>
+</body>
+</html>
